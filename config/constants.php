@@ -20,7 +20,8 @@ return [
         'role_success' => 'New Role Added Successfully',
         'permisssion_success' => 'New Permission Added Successfully',
         'role_permisssion_success' => 'New Permission Assign for Role',
-        'role_permisssion_alreday' => 'This Role Permission  Already assigned'
+        'role_permisssion_alreday' => 'This Role Permission  Already assigned',
+        'file_csv_error'=>'please upload csv file',
     ],
 
     'permission' => [
@@ -33,5 +34,21 @@ return [
         'unprocessable_entity' => 422,
         'unassigned' => 427,
         'ok' => 200,
+    ],
+
+    'models'=>[
+        'user_model' => 'user',
+    ],
+
+    'import_dir_path'=>[
+        'user_dir_path' => 'import/user/',
+    ],
+
+    'role'=>[
+        'apply_role' => '1',
+    ],
+
+    'file' => [
+        'name' => Carbon::now('Asia/Kolkata')->format('d_m_Y') . '_' . Carbon::now('Asia/Kolkata')->format('g_i_a'),
     ],
 ];

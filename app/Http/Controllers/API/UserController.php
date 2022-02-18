@@ -9,6 +9,7 @@ use App\Http\Requests\PermissionsRequest;
 use App\Http\Requests\RolePermissionsRequest;
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource; 
+use App\Imports\UsersImport;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\User;
@@ -65,6 +66,11 @@ class UserController extends Controller
     public function deleteAll(Request $request)
     {
         return User::deleteAll($request);
+    }
+
+    public function import(Request $request)
+    {
+        return User::importBulk($request,new UsersImport(),config('constants.models.user_model'),config('constants.import_dir_path.user_dir_path'));
     }
 
     public function export(Request $request)

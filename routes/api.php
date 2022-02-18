@@ -50,6 +50,8 @@ Route::group([
 
         Route::post('deletemultiple', [UserController::class, 'deleteAll']);
 
+        Route::post('users-import', [UserController::class, 'import']);
+
         Route::get('user-export', [UserController::class, 'export']);
 
         Route::post('change-password',[LoginController::class, 'changePassword']);

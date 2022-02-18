@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use App\Models\User\Import_csv_log;
+use App\Models\Import_csv_log;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
