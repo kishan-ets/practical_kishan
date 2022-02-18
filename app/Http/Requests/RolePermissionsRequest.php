@@ -25,7 +25,7 @@ class RolePermissionsRequest extends FormRequest
     {
         return [
             //
-            'role_id' => 'required|numeric',
+            // 'role_id' => 'required|numeric',
         ];
     }
 }

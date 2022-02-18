@@ -7,24 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 use App\Traits\Scopes;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Permission extends Model
+class Country extends Model
 {
     use HasFactory, Scopes, SoftDeletes;
 
     protected $fillable = [
-        'name',
+        'id', 'name', 'created_by','updated_by'
     ];
 
-    public function scopeAddPermission($query,$request){
-        $data = $request->all();
-        $user = Permission::create($data);
-
-        return response()->json(['success' => config('constants.messages.permisssion_success')], config('constants.validation_codes.ok'));
-    }
+    public $sortable=[
+        'id','name',
+    ];
 
     public function scopeDeleteAll($query,$request){
         if(!empty($request->id)) {
-            Permission::whereIn('id', $request->id)->delete();
+            Country::whereIn('id', $request->id)->delete();
 
             return response()->json(['success' => config('constants.messages.delete_success')], config('constants.validation_codes.ok'));
         }

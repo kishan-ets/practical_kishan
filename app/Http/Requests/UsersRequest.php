@@ -25,9 +25,9 @@ class UsersRequest extends FormRequest
         $id=end($urlArr);
         $commonRule = [
             'name' => 'required | regex:/^[a-zA-Z_ ]*$/ | max:255',
-            'email'  => 'required |email | unique:Users',
-            'password' => 'required',
-            'confirm_password' => 'required | same:password',
+            // 'email'  => 'required |email | unique:Users',
+            // 'password' => 'required',
+            // 'confirm_password' => 'required | same:password',
             'mobile_no' => 'required|min:10|numeric',
             'gender' => 'required | regex:/^[a-zA-Z_ ]*$/ ',
             'dob' => 'required | date_format:Y-m-d',
@@ -37,6 +37,15 @@ class UsersRequest extends FormRequest
             'city_id' => 'required | numeric',
             'role_id' => 'required | numeric',
         ];
+
+        if($uri == 'api/v1/users'){
+            $commonRule['email'] = 'required|max:255|unique:users,email,NULL,id,deleted_at,NULL';
+            $commonRule['password'] = 'required |nullable| min:6 | max:255';
+            $commonRule['confirm_password'] = 'required | same:password';
+        }else{
+            $commonRule['email'] = 'required|max:255|unique:users,email,' . $id.',id,deleted_at,NULL';
+
+        }
 
         return $commonRule;
     }

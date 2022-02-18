@@ -8,11 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use App\Traits\Scopes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\UserGallery;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Scopes, HasFactory, Notifiable;
+    use HasApiTokens, Scopes, HasFactory, SoftDeletes, Notifiable;
 
 
     public function scopeCommonFunctionMethod($query, $model, $request, $preQuery = null, $tablename = null, $groupBy = null, $export_select = false, $no_paginate = false)
@@ -56,10 +57,11 @@ class User extends Authenticatable
         'state_id',
         'city_id',
         'role_id',
+
     ];
 
     public $sortable=[
-         'name', 'email'
+         'name', 'email', 'gender', 'mobile_no', 'dob', 'address',
     ];
 
 

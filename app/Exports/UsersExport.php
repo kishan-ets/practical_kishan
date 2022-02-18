@@ -23,7 +23,12 @@ class UsersExport implements FromCollection, WithHeadings
         return  User::commonFunctionMethod(User::select(
             'id',
             'name',
-            'email'),
+            'email',
+            'mobile_no',
+            'gender',
+            'dob',
+            'address'
+        ),
             $this->request, true, null, null, true);
     }
 
@@ -32,7 +37,11 @@ class UsersExport implements FromCollection, WithHeadings
         return[
             'ID',
             'Name',
-            'Email'
+            'Email',
+            'Mobile No',
+            'Gender',
+            'DOB',
+            'Address'
         ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UsersRequest;
@@ -34,8 +34,9 @@ class UserController extends Controller
         return Permission::AddPermission($request);
     }
 
-    public function addRolePermission(RolePermissionsRequest $request){
-        return RolePermission::AddRolePermission($request);
+    public function addRolePermission(Request $request,$id){
+        $permission_arr = $request->permission_id;
+        return RolePermission::addRolePermission($permission_arr,$id);
     }
 
     public function register(UsersRequest $request)

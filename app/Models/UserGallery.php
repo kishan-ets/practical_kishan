@@ -13,4 +13,10 @@ class UserGallery extends Model
 
     protected $fillable = ['user_id', 'filename'];
 
+    public function getFilenameAttribute($value){
+        if ($value == NULL)
+            return "";
+        return url(config('constants.image.dir_path') . $value);
+    }
+
 }

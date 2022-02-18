@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserGalleriesTable extends Migration
+class AlterUserAddSoftDeleteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateUserGalleriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_galleries', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedInteger('user_id')->index()->comment('Users table ID');
-            $table->string('filename');
-            $table->timestamps();
+        //
+        Schema::table('users', function (Blueprint $table) {
+            //
             $table->softDeletes();
+
         });
     }
 
@@ -29,6 +28,6 @@ class CreateUserGalleriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_galleries');
+        //
     }
 }

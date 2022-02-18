@@ -20,8 +20,12 @@ class RolePermission extends Model
         return $this->belongsTo(Permission::class);
     }
 
-    public function scopeAddRolePermission($query,$request){
-        $data = $request->all();
+    public function permission_data() {
+        return $this->belongsToMany(Role::class,"permission_role","role_id","permission_id");
+    }
+
+    public function addRolePermission($permission_arr,$id){
+        // $data = $request->all();
         
         // $check_role_permission = RolePermission::where('role_id',$request->role_id)->where('permission_id',$request->permission_id)->first();
 
@@ -31,11 +35,13 @@ class RolePermission extends Model
             //     'permission_id' => $request->get('permission_id'),
             //     'role_id' => $request->get('role_id'),
             // ]);
-            $delete_role_permission = RolePermission::where('role_id',$data['role_id'])->delete();
+            $delete_role_permission = RolePermission::where('role_id',$id)->delete();
+
+            // $this->permission_data()->detach(); //this executes the delete-query
 
             $insert_arr = [];
-            foreach($data['permission_id'] as $key => $value){
-                $insert_arr[$key]['role_id'] = $data['role_id'];
+            foreach($permission_arr as $key => $value){
+                $insert_arr[$key]['role_id'] = $id;
                 $insert_arr[$key]['permission_id'] = $value;
             }
 
