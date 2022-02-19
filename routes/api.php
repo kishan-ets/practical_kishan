@@ -44,7 +44,7 @@ Route::group([
 
         // Route::post('add_permission', [UserController::class, 'addPermission']);
 
-        Route::put('add_role_permission/{id}', [UserController::class, 'addRolePermission']);
+        Route::post('add_role_permission/{id}', [UserController::class, 'addRolePermission']);
 
         Route::apiResource('users', 'App\Http\Controllers\API\UserController');
 

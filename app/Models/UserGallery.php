@@ -16,6 +16,8 @@ class UserGallery extends Model
     public function getFilenameAttribute($value){
         if ($value == NULL)
             return "";
+
+        $value = str_replace('public/', '', $value);
         return url(config('constants.image.dir_path') . $value);
     }
 

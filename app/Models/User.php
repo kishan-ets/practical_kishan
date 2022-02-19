@@ -103,7 +103,8 @@ class User extends Authenticatable
 
         if($request->hasfile('documents')) {
             foreach ($request->documents as $image) {
-                $path = User::uploadOne($image, '/public/user/documents/' . $user->id);
+                // $path = User::uploadOne($image, '/public/user/documents/' . $user->id);
+                $path = User::uploadOne($image, '/user/documents/' . $user->id);
                 UserGallery::create(['user_id' => $user->id, 'filename' => $path]);
             }
         }

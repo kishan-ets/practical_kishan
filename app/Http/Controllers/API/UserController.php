@@ -35,9 +35,13 @@ class UserController extends Controller
         return Permission::AddPermission($request);
     }
 
-    public function addRolePermission(Request $request,$id){
-        $permission_arr = $request->permission_id;
-        return RolePermission::addRolePermission($permission_arr,$id);
+    public function addRolePermission(Request $request,$id,Role $role){
+
+
+        // $permission_arr = $request->permission_id;
+        $permission_arr = $request->all();
+        // dd($request->all());
+        return Role::addRolePermission($permission_arr,$id,$role);
     }
 
     public function register(UsersRequest $request)

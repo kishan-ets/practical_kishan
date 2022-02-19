@@ -44,6 +44,10 @@ return [
         'user_dir_path' => 'import/user/',
     ],
 
+    'image' => [
+        'dir_path' => '/storage/',
+    ],
+
     'role'=>[
         'apply_role' => '1',
     ],
