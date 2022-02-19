@@ -37,7 +37,7 @@ Route::group([
     Route::post('forgot-passsword', [LoginController::class, 'forgotPassword']);
 
     Route::group([
-        'middleware' => ['auth:api'],
+        'middleware' => ['auth:api', 'check.permission'],
     ], function() {
 
         // Route::post('add_role', [UserController::class, 'addRole']);
