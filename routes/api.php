@@ -81,7 +81,7 @@ Route::group([
 
         Route::post('deleteMultipleRole', [RolesAPIController::class, 'deleteAll']);
 
-        //Role
+        //Permission
         Route::apiResource('permissions', 'App\Http\Controllers\API\PermissionsAPIController');
 
         Route::post('deleteMultiplePermissions', [PermissionsAPIController::class, 'deleteAll']);

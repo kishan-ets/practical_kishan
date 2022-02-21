@@ -46,7 +46,7 @@ class UserController extends Controller
 
     public function register(UsersRequest $request)
     {
-        return User::Register($request);
+        return new UserResource(User::Register($request));
     }
 
     public function show(User $user)

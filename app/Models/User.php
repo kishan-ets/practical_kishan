@@ -109,7 +109,8 @@ class User extends Authenticatable
             }
         }
 
-        return response()->json(['success' => config('constants.messages.registration_success')], config('constants.validation_codes.ok'));
+        return $user;
+        // return response()->json(['success' => config('constants.messages.registration_success')], config('constants.validation_codes.ok'));
     }
 
     public function scopeDeleteAll($query,$request){
